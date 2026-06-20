@@ -1,65 +1,70 @@
-import Image from "next/image";
+import Link from "next/link";
+import { Droplets, Users, ShieldCheck } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-background p-6">
+      <div className="max-w-3xl w-full text-center space-y-10">
+        
+        {/* Header / Logo Section */}
+        <div className="flex flex-col items-center justify-center space-y-4">
+          <div className="text-primary">
+            <Droplets size={72} fill="currentColor" />
+          </div>
+          <div>
+            {/* Menggunakan class .h1 dari Design System kita */}
+            <h1 className="h1 text-primary mb-4">AirBersih.id</h1>
+            <p className="text-lg text-slate-600 max-w-xl mx-auto">
+              Sistem Manajemen Air Bersih & Pemantauan Sensor IoT Terintegrasi untuk Lingkungan RT/RW.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Portal Navigasi */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+          
+          {/* Akses Warga */}
+          <Link 
+            href="/warga" 
+            className="flex flex-col items-center p-8 bg-white border border-slate-200 rounded-2xl hover:border-action hover:shadow-lg transition-all duration-300 group"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <div className="p-4 bg-blue-50 text-action rounded-full mb-6 group-hover:bg-action group-hover:text-white transition-colors duration-300">
+              <Users size={40} />
+            </div>
+            {/* Menggunakan class .h2 dari Design System */}
+            <h2 className="h2 text-foreground mb-3">Portal Warga</h2>
+            <p className="text-sm text-slate-500 text-center leading-relaxed">
+              Akses informasi donasi, tagihan air bulanan, dan pantau kualitas air di lingkungan Anda.
+            </p>
+          </Link>
+
+          {/* Akses Pengurus */}
+          <Link 
+            href="/pengurus" 
+            className="flex flex-col items-center p-8 bg-white border border-slate-200 rounded-2xl hover:border-primary hover:shadow-lg transition-all duration-300 group"
           >
-            Documentation
-          </a>
+            <div className="p-4 bg-slate-50 text-primary rounded-full mb-6 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+              <ShieldCheck size={40} />
+            </div>
+            <h2 className="h2 text-foreground mb-3">Panel RT/RW</h2>
+            <p className="text-sm text-slate-500 text-center leading-relaxed">
+              Kelola data node sensor, monitor operasional pompa, dan kelola peringatan sistem.
+            </p>
+          </Link>
+
         </div>
-      </main>
+        
+        {/* Link Opsional ke Halaman Auth */}
+        <div className="pt-10">
+          <Link 
+            href="/login" 
+            className="text-sm font-semibold text-slate-400 hover:text-action transition-colors"
+          >
+            Masuk sebagai Administrator Sistem &rarr;
+          </Link>
+        </div>
+
+      </div>
     </div>
   );
 }
